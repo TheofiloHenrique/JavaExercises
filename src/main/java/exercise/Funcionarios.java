@@ -36,13 +36,15 @@ public class Funcionarios {
         int idSalario = sc.nextInt();
 
         Integer posicao = posicaoId(list,idSalario);
-        if(posicao == null)
-            System.out.println("O ID informado não existe!");
-        else{
+
+        while(posicao == null){
+            System.out.println("O ID informado não existe!\nDigite outro ID: ");
+            idSalario = sc.nextInt();
+            posicao = posicaoId(list,idSalario);
+        }
             System.out.println("Informe a porcentagem: ");
             double porcentagem = sc.nextDouble();
             list.get(posicao).aumentarSalario(porcentagem);
-        }
 
         for(Funcionario funcionario : list)
             System.out.println(funcionario);
